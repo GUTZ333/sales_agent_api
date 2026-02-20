@@ -1,0 +1,81 @@
+@baseUrl = http://localhost:3000
+
+##########################################
+### Cadastrando o cliente
+##########################################
+
+POST {{baseUrl}}/client
+Content-Type: application/json
+
+{
+  "name": "João",
+  "identifier": "123456789"
+}
+
+##########################################
+### Atualizando dados de cliente já cadastrando
+##########################################
+
+PUT {{baseUrl}}/client/1
+Content-Type: application/json
+
+{
+  "name": "João Victor",
+  "identifier": "19971701182"
+}
+
+##########################################
+### Buscar produtos de tal tipo
+
+GET {{baseUrl}}/product/search?name=camisa
+
+##########################################
+### Busca produtos que estejam avaliados
+
+GET {{baseUrl}}/product/get-available
+
+##########################################
+### Buscar um produto específico pelo id
+#########################################
+
+GET {{baseUrl}}/product/get-by-id/2
+
+########################################
+### Criar o pedido
+########################################
+
+POST {{baseUrl}}/order/create
+Content-Type: application/json
+
+{
+  "client_id": 1
+}
+
+########################################
+### Adicionar item ao pedido
+########################################
+
+POST {{baseUrl}}/order/add-item
+Content-Type: application/json
+
+{
+  "order_id": 1,
+  "product_id": 3,
+  "quantity": 2
+}
+
+########################################
+###  Confirmar pedido (finalizando)
+
+POST {{baseUrl}}/order/confirm
+Content-Type: application/json
+
+{
+  "order_id": 1
+}
+
+#########################################
+### Buscar pedido por client
+#########################################
+
+POST {{baseUrl}}/order/get-by-client/1
