@@ -20,7 +20,7 @@ export class OrderService {
       .single()
   }
 
-  // Adiciona um item/s dentro de um pedido já cadastrado que o usuário escolheu
+  // Adiciona um item/s na entidade de itens por pedido referente á um pedido já cadastrado que o usuário escolheu
   async addItem(order_id: string, product_id: string, quantity: number) {
 
     const { data, error } = await this.getProduct(product_id)
@@ -38,7 +38,7 @@ export class OrderService {
     }
 
     const result = await supabase
-      .from("orders")
+      .from("order_itens")
       .insert([{
         id: order_id,
         product_id: product_id,
