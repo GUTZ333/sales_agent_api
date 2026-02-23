@@ -6,7 +6,7 @@ export class OrderService {
   async create(client_id: string) {
     return await supabase
       .from("orders")
-      .insert([{ client_id: client_id }])
+      .insert([{ client_id: client_id, status: "Uncorfimed" }])
       .select()
       .single()
   }

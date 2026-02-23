@@ -41,41 +41,19 @@ GET {{baseUrl}}/product/get-available
 GET {{baseUrl}}/product/get-by-id/2
 
 ########################################
-### Criar o pedido
+### Rota que faz operações de pedido sendo criação, adição de produtos dentro de um pedido e confirmação dele
 ########################################
 
-POST {{baseUrl}}/order/create
+POST {{baseUrl}}/order/process-confirm
 Content-Type: application/json
 
 {
-  "client_id": 1
-}
-
-########################################
-### Adicionar item ao pedido
-########################################
-
-POST {{baseUrl}}/order/add-item
-Content-Type: application/json
-
-{
-  "order_id": 1,
-  "product_id": 3,
-  "quantity": 2
-}
-
-########################################
-###  Confirmar pedido (finalizando)
-
-POST {{baseUrl}}/order/confirm
-Content-Type: application/json
-
-{
-  "order_id": 1
+  "action": "confirm",
+  "order_id": 6
 }
 
 #########################################
 ### Buscar pedido por client
 #########################################
 
-POST {{baseUrl}}/order/get-by-client/1
+GET {{baseUrl}}/order/get-by-client/1

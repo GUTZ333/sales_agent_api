@@ -6,7 +6,5 @@ import { OrderController } from "../controllers/order_controller";
 const controller = new OrderController()
 export const orderRoute = Router()
 
-orderRoute.post('/create', controller.create)
-orderRoute.post('/add-item', controller.addItem)
-orderRoute.post('/confirm', controller.confirm)
+orderRoute.post('/process-confirm', controller.processConfirm.bind(controller))
 orderRoute.get('/get-by-client/:client_id', controller.getByClient)
